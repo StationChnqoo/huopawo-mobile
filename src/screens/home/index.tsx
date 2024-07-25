@@ -1,9 +1,9 @@
-import React from 'react';
+import ToolBar from '@src/components/ToolBar';
 import type {PropsWithChildren} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
@@ -17,10 +17,15 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {RootStacksProp} from '..';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
+
+interface MyProps {
+  navigation?: RootStacksProp;
+}
 
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -48,7 +53,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-function HomeScreen(): React.JSX.Element {
+const HomeScreen: React.FC<MyProps> = props => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -57,9 +62,11 @@ function HomeScreen(): React.JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+      <ToolBar
+        title={'测试首页'}
+        onBackPress={() => {
+          props.navigation.goBack();
+        }}
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -87,7 +94,7 @@ function HomeScreen(): React.JSX.Element {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   sectionContainer: {

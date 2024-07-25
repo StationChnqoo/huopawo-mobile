@@ -27,7 +27,11 @@ export default function Stacks() {
   return (
     <NavigationContainer ref={navigator}>
       <RootStack.Navigator
-        screenOptions={{animation: 'slide_from_right', headerShown: false}}>
+        screenOptions={{
+          animation: 'slide_from_right',
+          headerShown: false,
+          animationDuration: 618,
+        }}>
         <RootStack.Screen name="App" component={App} />
         <RootStack.Screen name="HomeScreen" component={HomeScreen} />
       </RootStack.Navigator>
