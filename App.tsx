@@ -39,7 +39,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
         ]}>
         {title}
       </Text>
-      <Image source={require('@src/assets/test/android.png')} />
+      <Image source={require('@root/assets/test/android.png')} />
       <Text
         style={[
           styles.sectionDescription,
