@@ -1,19 +1,8 @@
-import {RootStacksProp} from '@src/screens';
-import {useStore} from '@src/stores';
-import React from 'react';
 import type {PropsWithChildren} from 'react';
-import {
-  Button,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from 'react';
+import {ScrollView, StyleSheet, Text, useColorScheme, View} from 'react-native';
 
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {
   Colors,
   DebugInstructions,
@@ -21,10 +10,15 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {RootStacksProp} from '..';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
+
+interface MyProps {
+  navigation?: RootStacksProp;
+}
 
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -39,7 +33,6 @@ function Section({children, title}: SectionProps): React.JSX.Element {
         ]}>
         {title}
       </Text>
-      <Image source={require('@src/assets/test/android.png')} />
       <Text
         style={[
           styles.sectionDescription,
@@ -53,22 +46,17 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-interface AppProps {
-  navigation?: RootStacksProp;
-}
-
-const App: React.FC<AppProps> = props => {
+const HomeScreen: React.FC<MyProps> = props => {
   const isDarkMode = useColorScheme() === 'dark';
-  const {bears, increase} = useStore();
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <View style={{flex: 1}}>
+      <View
+        style={{height: useSafeAreaInsets().top, backgroundColor: '#fff'}}
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -79,15 +67,9 @@ const App: React.FC<AppProps> = props => {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Step One">
-            <Text style={styles.highlight}>{bears}</Text> to change this screen
-            and then come back to see your edits.
+            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            screen and then come back to see your edits.
           </Section>
-          <Button
-            title="Test Store"
-            onPress={() => {
-              increase(1);
-            }}
-          />
           <Section title="See Your Changes">
             <ReloadInstructions />
           </Section>
@@ -100,7 +82,7 @@ const App: React.FC<AppProps> = props => {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -123,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default HomeScreen;
