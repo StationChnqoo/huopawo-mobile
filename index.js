@@ -1,16 +1,18 @@
 import React, {createContext, useEffect} from 'react';
-import {AppRegistry, StatusBar, View} from 'react-native';
-import App from './App';
+import {AppRegistry, View} from 'react-native';
 import {name as appName} from './app.json';
-import {useStore} from './src/stores';
 import Screens from './src/screens';
+import {useStore} from './src/stores';
+
 const StoreContext = createContext();
 
-const Huopawp = () => {
+const Huopawo = () => {
+  useEffect(() => {}, []);
+
   return (
     <StoreContext.Provider value={useStore}>
       <View style={{flex: 1}}>
-        <StatusBar translucent={false} />
+        {/* <StatusBar translucent={false} /> */}
         <View style={{flex: 1, position: 'relative'}}>
           <Screens />
         </View>
@@ -18,4 +20,5 @@ const Huopawp = () => {
     </StoreContext.Provider>
   );
 };
-AppRegistry.registerComponent(appName, () => Huopawp);
+
+AppRegistry.registerComponent(appName, () => Huopawo);

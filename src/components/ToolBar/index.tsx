@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -23,7 +24,11 @@ const ToolBar: React.FC<MyProps> = props => {
     <View>
       <StatusBar
         barStyle={'dark-content'}
-        // backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={'#fff'}
+        translucent={false}
+      />
+      <View
+        style={{height: useSafeAreaInsets().top, backgroundColor: '#fff'}}
       />
       <View style={styles.views}>
         <TouchableOpacity
@@ -59,6 +64,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     justifyContent: 'space-between',
     height: 44,
+    backgroundColor: '#fff',
   },
 });
 

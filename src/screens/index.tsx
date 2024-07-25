@@ -8,13 +8,14 @@ import {
 } from '@react-navigation/native-stack';
 
 import * as React from 'react';
-
 import HomeScreen from './home';
 import App from '@root/App';
+import MainScreen from './main';
 
 export type RootStacksParams = {
   App: undefined;
   HomeScreen: undefined;
+  MainScreen: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStacksParams>();
@@ -32,6 +33,7 @@ export default function Stacks() {
           headerShown: false,
           animationDuration: 618,
         }}>
+        <RootStack.Screen name="MainScreen" component={MainScreen} />
         <RootStack.Screen name="App" component={App} />
         <RootStack.Screen name="HomeScreen" component={HomeScreen} />
       </RootStack.Navigator>

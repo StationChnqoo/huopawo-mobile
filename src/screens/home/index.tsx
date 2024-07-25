@@ -1,15 +1,8 @@
-import ToolBar from '@src/components/ToolBar';
 import type {PropsWithChildren} from 'react';
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, Text, useColorScheme, View} from 'react-native';
 
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {
   Colors,
   DebugInstructions,
@@ -61,12 +54,9 @@ const HomeScreen: React.FC<MyProps> = props => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <ToolBar
-        title={'测试首页'}
-        onBackPress={() => {
-          props.navigation.goBack();
-        }}
+    <View style={{flex: 1}}>
+      <View
+        style={{height: useSafeAreaInsets().top, backgroundColor: '#fff'}}
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -92,7 +82,7 @@ const HomeScreen: React.FC<MyProps> = props => {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
