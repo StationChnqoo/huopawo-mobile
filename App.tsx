@@ -1,3 +1,4 @@
+import {RootStacksProp} from '@src/screens';
 import {useStore} from '@src/stores';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
@@ -52,7 +53,11 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-function App(): React.JSX.Element {
+interface AppProps {
+  navigation?: RootStacksProp;
+}
+
+const App: React.FC<AppProps> = props => {
   const isDarkMode = useColorScheme() === 'dark';
   const {bears, increase} = useStore();
   const backgroundStyle = {
@@ -81,6 +86,7 @@ function App(): React.JSX.Element {
             title="Test Store"
             onPress={() => {
               increase(1);
+              props.navigation.push('HomeScreen');
             }}
           />
           <Section title="See Your Changes">
@@ -97,7 +103,7 @@ function App(): React.JSX.Element {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   sectionContainer: {
