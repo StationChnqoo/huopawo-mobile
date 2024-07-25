@@ -1,7 +1,6 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
-  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -36,7 +35,6 @@ function Section({children, title}: SectionProps): React.JSX.Element {
         ]}>
         {title}
       </Text>
-      <Image source={require('@src/assets/test/android.png')} />
       <Text
         style={[
           styles.sectionDescription,
@@ -50,7 +48,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-function App(): React.JSX.Element {
+function HomeScreen(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -110,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default HomeScreen;
