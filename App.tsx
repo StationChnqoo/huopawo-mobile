@@ -1,6 +1,8 @@
+import {useStore} from '@src/stores';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Button,
   Image,
   SafeAreaView,
   ScrollView,
@@ -52,7 +54,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const {bears, increase} = useStore();
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -72,9 +74,15 @@ function App(): React.JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
+            <Text style={styles.highlight}>{bears}</Text> to change this screen
+            and then come back to see your edits.
           </Section>
+          <Button
+            title="Test Store"
+            onPress={() => {
+              increase(1);
+            }}
+          />
           <Section title="See Your Changes">
             <ReloadInstructions />
           </Section>
