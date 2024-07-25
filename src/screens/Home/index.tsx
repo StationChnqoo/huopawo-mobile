@@ -11,6 +11,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import {RootStacksProp} from '..';
+import SuggestTips from './components/SuggestTips';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -54,25 +55,18 @@ const HomeScreen: React.FC<MyProps> = props => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: '#f0f0f0'}}>
       <View
         style={{height: useSafeAreaInsets().top, backgroundColor: '#fff'}}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+        <View style={{paddingHorizontal: 15}}>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
+          <SuggestTips onClosePress={() => {}} />
           <Section title="Debug">
             <DebugInstructions />
           </Section>
