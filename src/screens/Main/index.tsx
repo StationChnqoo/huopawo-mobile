@@ -4,6 +4,7 @@ import React from 'react';
 import {Image} from 'react-native';
 import HomeScreen from '../Home';
 import MarketScreen from '../Market';
+import {useStore} from '@src/stores';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,10 +23,10 @@ function MainScreen() {
       label: '热门',
     },
     {
-      name: 'Message',
+      name: 'Order',
       component: HomeScreen,
-      icon: require('./assets/menu_message.png'),
-      label: '消息',
+      icon: require('./assets/menu_order.png'),
+      label: '订单',
     },
     {
       name: 'Friends',
@@ -40,16 +41,17 @@ function MainScreen() {
       label: '我的',
     },
   ];
+  const {theme} = useStore();
   return (
     <Tab.Navigator>
       {screens.map((it, i) => (
         <Tab.Screen
-          name={it.name}
+          {...it}
           key={i}
-          component={it.component}
           options={{
             headerShown: false,
             tabBarLabel: it.label,
+            tabBarActiveTintColor: theme,
             tabBarIcon: ({color}) => (
               <Image
                 source={it.icon}

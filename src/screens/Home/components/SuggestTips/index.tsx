@@ -1,4 +1,5 @@
 import Button from '@src/components/Button';
+import {useStore} from '@src/stores';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
@@ -8,6 +9,7 @@ interface MyProps {
 
 const SuggestTips: React.FC<MyProps> = props => {
   const {onClosePress} = props;
+  const {theme} = useStore();
   return (
     <View style={styles.view}>
       <TouchableOpacity
@@ -29,8 +31,8 @@ const SuggestTips: React.FC<MyProps> = props => {
       <Button
         title={'去评价'}
         onPress={() => {}}
-        style={styles.viewButton}
-        textStyle={{color: 'green'}}
+        style={[styles.viewButton, {borderColor: theme}]}
+        textStyle={{color: theme}}
       />
     </View>
   );
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginTop: 15,
+    marginHorizontal: 12,
     backgroundColor: '#fff',
     borderRadius: 8,
   },
@@ -63,7 +65,6 @@ const styles = StyleSheet.create({
   viewButton: {
     borderWidth: 1,
     borderRadius: 12,
-    borderColor: 'green',
     paddingHorizontal: 6,
     paddingVertical: 4,
   },
