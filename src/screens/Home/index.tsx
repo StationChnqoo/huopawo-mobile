@@ -9,6 +9,7 @@ import DoingOrders from './components/DoingOrders';
 import MarketOrders from './components/MarketOrders';
 import SuggestTips from './components/SuggestTips';
 import Toolbar from './components/Toolbar';
+import SafeArea from '@src/components/SafeArea';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -16,25 +17,24 @@ interface MyProps {
 
 const HomeScreen: React.FC<MyProps> = props => {
   return (
-    <View style={{flex: 1, backgroundColor: '#f0f0f0'}}>
-      <View
-        style={{height: useSafeAreaInsets().top, backgroundColor: '#fff'}}
-      />
-      <Toolbar onSearchPress={() => {}} onMessagePress={() => {}} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View style={{height: 12}} />
-        {[
-          <Banner />,
-          <DoingOrders />,
-          <MarketOrders />,
-          <SuggestTips onClosePress={() => {}} />,
-        ].map((it, i) => (
-          <View key={i} style={{marginBottom: 12}}>
-            {it}
-          </View>
-        ))}
-      </ScrollView>
-    </View>
+    <SafeArea>
+      <View style={{flex: 1, backgroundColor: '#f0f0f0'}}>
+        <Toolbar onSearchPress={() => {}} onMessagePress={() => {}} />
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <View style={{height: 12}} />
+          {[
+            <Banner />,
+            <DoingOrders />,
+            <MarketOrders />,
+            <SuggestTips onClosePress={() => {}} />,
+          ].map((it, i) => (
+            <View key={i} style={{marginBottom: 12}}>
+              {it}
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+    </SafeArea>
   );
 };
 

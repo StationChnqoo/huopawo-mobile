@@ -55,6 +55,15 @@ const Styles = {
       backgroundColor,
     };
   },
+  CARD: <ViewStyle>{
+    // iOS 阴影
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 0.618},
+    shadowOpacity: 0.1,
+    shadowRadius: 0.618,
+    // Android 阴影
+    elevation: 1,
+  },
 };
 
 const x = {

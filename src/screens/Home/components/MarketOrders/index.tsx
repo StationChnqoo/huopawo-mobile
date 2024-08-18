@@ -10,12 +10,10 @@ import {
   View,
 } from 'react-native';
 
-interface MyProps {
-  onClosePress: () => void;
-}
+interface MyProps {}
 
 const MarketOrders: React.FC<MyProps> = props => {
-  const {onClosePress} = props;
+  const {} = props;
   const [datas, setDatas] = useState(Array(10).fill(''));
   const {theme} = useStore();
 

@@ -4,12 +4,10 @@ import {useStore} from '@src/stores';
 import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-interface MyProps {
-  onClosePress: () => void;
-}
+interface MyProps {}
 
 const DoingOrders: React.FC<MyProps> = props => {
-  const {onClosePress} = props;
+  const {} = props;
   const [datas, setDatas] = useState(Array(10).fill(''));
   const {theme} = useStore();
   return (

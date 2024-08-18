@@ -1,8 +1,13 @@
-import Button from '@src/components/Button';
 import x from '@src/constants/x';
-import {useStore} from '@src/stores';
+import { useStore } from '@src/stores';
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 
 interface MyProps {
   onSearchPress: () => void;
@@ -12,9 +17,8 @@ interface MyProps {
 const Toolbar: React.FC<MyProps> = props => {
   const {onSearchPress, onMessagePress} = props;
   const {theme} = useStore();
-
   return (
-    <View style={styles.view}>
+    <View style={[styles.view, x.Styles.CARD]}>
       <View style={styles.viewMain}>
         <Image
           source={require('../assets/location.png')}
@@ -65,7 +69,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     backgroundColor: '#fff',
-    borderRadius: 8,
   },
   viewMain: {
     alignItems: 'center',

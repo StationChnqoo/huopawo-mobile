@@ -1,15 +1,11 @@
-import Button from '@src/components/Button';
 import x from '@src/constants/x';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-interface MyProps {
-  onSearchPress: () => void;
-  onMessagePress: () => void;
-}
+interface MyProps {}
 
 const Banner: React.FC<MyProps> = props => {
-  const {onSearchPress, onMessagePress} = props;
+  const {} = props;
   return (
     <View style={styles.view}>
       <Image
